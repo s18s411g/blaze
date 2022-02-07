@@ -197,6 +197,8 @@ def averaging(points):
                 _average.append([sort_ys[x_len][y_len][0][0],
                                 sort_ys[x_len][y_len][0][1],
                                 z_mean])
-    
+            else :
+                _average.append([None, None, None])
+                
     return _average
 

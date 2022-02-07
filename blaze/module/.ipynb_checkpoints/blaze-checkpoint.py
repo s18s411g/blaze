@@ -176,6 +176,9 @@ def averaging(points):
     一つの格子内で平均値をとって格子データ化する
     Args:
         points (list) : [[x, y, z], ...]の点群データ
+    Log:
+        sort_ysはすべての場合で行うべき
+        空データに対応してない        
     """
     unique_x = set([point[0] for point in points])
     sort_xs = [[point for point in points if point[0]==x] for x in unique_x]
@@ -192,8 +195,10 @@ def averaging(points):
             if s!=0:
                 z_mean = s / len(sort_ys[x_len][y_len])
                 _average.append([sort_ys[x_len][y_len][0][0],
-                            sort_ys[x_len][y_len][0][1],
-                            z_mean])
-    
+                                sort_ys[x_len][y_len][0][1],
+                                z_mean])
+            else :
+                _average.append([None, None, None])
+                
     return _average
 
